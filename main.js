@@ -45,11 +45,9 @@ function mostrarPizzas() {
     for (let i = 0; i < pizzas.length; i++) {
         $ul = document.querySelector("ul");
         $li = document.createElement("li");
-        $liTexto = document.createTextNode(`${pizzas[i].nombre}`);
+        $liTexto = document.createTextNode(`${pizzas[i].nombre}________id:${pizzas[i].id}`);
         $ul.appendChild($li);
         $li.appendChild($liTexto);
-        $li.classList.add(`lista`);
-        $li.classList.add(`${i}`);
     }
 }
 
@@ -65,7 +63,7 @@ function validarInput() {
 //si coincide input
 
     for (let i = 0; i < pizzas.length; i++) {
-        if (document.querySelector("input").value === pizzas[i].nombre) {
+        if (parseInt(document.querySelector("input").value) === pizzas[i].id) {
             $h2.textContent=(`Pizza en stock y vale ${pizzas[i].precio}$`);
             $h2.style.color = "green";
             return
