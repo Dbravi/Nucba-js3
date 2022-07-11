@@ -39,6 +39,7 @@ let pizzas = [
         precio: 800,
     }
 ]
+//genero lista de pizzas
 
 function mostrarPizzas() {
     for (let i = 0; i < pizzas.length; i++) {
@@ -57,7 +58,11 @@ mostrarPizzas();
 $h2 = document.getElementById("h2");
 $h4 = document.getElementById("h4")
 
+//valido input ingresado
+
 function validarInput() {
+
+//si coincide input
 
     for (let i = 0; i < pizzas.length; i++) {
         if (document.querySelector("input").value === pizzas[i].nombre) {
@@ -67,10 +72,12 @@ function validarInput() {
         }
        
     }
-
+//si no coincide input
     $h4.textContent = ("Pizza NO encontrada");
     $h4.style.color = "red";
 }
+
+//boton submnit (resetea campos)
 
 document.addEventListener("click", (e) => {
     if (e.target.matches("#button")) {
