@@ -40,7 +40,6 @@ let pizzas = [
     }
 ]
 
-
 function mostrarPizzas() {
     for (let i = 0; i < pizzas.length; i++) {
         $ul = document.querySelector("ul");
@@ -48,43 +47,37 @@ function mostrarPizzas() {
         $liTexto = document.createTextNode(`${pizzas[i].nombre}`);
         $ul.appendChild($li);
         $li.appendChild($liTexto);
+        $li.classList.add(`lista`);
         $li.classList.add(`${i}`);
     }
 }
 
 mostrarPizzas();
 
+$h2 = document.getElementById("h2");
+$h4 = document.getElementById("h4")
 
 function validarInput() {
 
     for (let i = 0; i < pizzas.length; i++) {
         if (document.querySelector("input").value === pizzas[i].nombre) {
-            $h2 = document.querySelector("h2");
-            $p = document.createElement("p");
-            $pText = document.createTextNode(`Pizza en stock y vale ${pizzas[i].precio}$`);
-            $h2.appendChild($p);
-            $p.appendChild($pText);
-            $p.style.color = "green";
-            document.getElementsByClassName(`${i}`)[0].style.backgroundColor="green";
+            $h2.textContent=(`Pizza en stock y vale ${pizzas[i].precio}$`);
+            $h2.style.color = "green";
             return
         }
        
     }
 
-    $h4 = document.querySelector("h4");
-    $p = document.createElement("p");
-    $pText = document.createTextNode("Pizza NO encontrada");
-    $h4.appendChild($p)
-    $p.appendChild($pText)
-    $p.style.color = "red";
+    $h4.textContent = ("Pizza NO encontrada");
+    $h4.style.color = "red";
 }
 
 document.addEventListener("click", (e) => {
     if (e.target.matches("#button")) {
-        if (document.querySelector("p")) {
-            document.querySelector("p").remove()
+        if ($h2.textContent !== "" || $h4.textContent !== "" ) {
+            $h2.textContent="";
+            $h4.textContent="";
         }
-      
         validarInput()
     }
 });
